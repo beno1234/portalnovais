@@ -46,6 +46,8 @@ export const setError = (err) => {
 // Cria um banner
 export const createBanner = (formValues) => async dispatch => {
     dispatch(startLoading("Carregando..."));
+    const local = formValues.locations[0];
+    formValues.locations = local;
     console.log(formValues)
     try {
         // Pega o token do localStorage

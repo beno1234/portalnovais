@@ -306,32 +306,7 @@ const BannerForm = ({ admin, cover, initialValues, onSubmit, disableSubmit, form
                                     disabled={(errorCategory || disableSubmit) ? true : false}
                                 />
                             }
-                        </div>
-
-                        <div className="fields">
-                            <Field
-                                name="type"
-                                component={Select}
-                                placeholder="Escolha uma opção"
-                                options={typeOptions}
-                                label="Tipo do banner *"
-                                disabled={disableSubmit}
-                            />
-
-                            <Condition when="type" is="maxBanner">
-                                <Field
-                                    name="bannerPlaces"
-                                    component={Select}
-                                    options={pageOptions}
-                                    placeholder="Escolha uma opção"
-                                    label="Em qual local *"
-                                    disabled={disableSubmit}
-                                    isMultiple
-                                />
-                            </Condition>
-                        </div>
-
-                        {(!isLoadingLocation && locationOptions.length <= 0)
+                            {(!isLoadingLocation && locationOptions.length <= 0)
                                 ? errorLocation
                                     ? <div className='field'>
                                         <label>Localização</label>
@@ -359,6 +334,32 @@ const BannerForm = ({ admin, cover, initialValues, onSubmit, disableSubmit, form
                             }
 
 
+                        </div>
+
+                        <div className="fields">
+                            <Field
+                                name="type"
+                                component={Select}
+                                placeholder="Escolha uma opção"
+                                options={typeOptions}
+                                label="Tipo do banner *"
+                                disabled={disableSubmit}
+                            />
+
+                            <Condition when="type" is="maxBanner">
+                                <Field
+                                    name="bannerPlaces"
+                                    component={Select}
+                                    options={pageOptions}
+                                    placeholder="Escolha uma opção"
+                                    label="Em qual local *"
+                                    disabled={disableSubmit}
+                                    isMultiple
+                                />
+                            </Condition>
+                        </div>
+
+                        
                         <h4 className="ui header">Imagens</h4>
                         <div className='field'>
                             <label htmlFor="coverImage" className="ui icon button">

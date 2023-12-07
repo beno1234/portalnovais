@@ -20,7 +20,7 @@ const BannerEdit = () => {
 
     const initialValues = useMemo(() => {
         const categoriesId = [];
-        const locationId = [];
+        const locationId = "";
 
         return {
             categories: categoriesId,
