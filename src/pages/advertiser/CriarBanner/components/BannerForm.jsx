@@ -151,6 +151,9 @@ const BannerForm = ({ admin, cover, initialValues, onSubmit, disableSubmit, form
         if (admin && !values.status) {
             errors.status = "Selecione um status";
         }
+        if (!values.locations || values.locations?.length <= 0) {
+            errors.locations = "Selecione ao menos uma localização"
+        }
         /* if (!values.email) {
             errors.email = "Insira o e-mail.";
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
