@@ -46,9 +46,10 @@ export const setError = (err) => {
 // Cria um banner
 export const createBanner = (formValues) => async dispatch => {
     dispatch(startLoading("Carregando..."));
-    const local = formValues.locations[0];
-    formValues.locations = local;
-    console.log(formValues)
+
+    // Certifique-se de que formValues.locations seja um array para evitar erros
+    formValues.locations = formValues.locations || [];
+
     try {
         // Pega o token do localStorage
         const token = localStorage.getItem('token');
@@ -60,7 +61,22 @@ export const createBanner = (formValues) => async dispatch => {
             }
         }
 
-        await api.post('/banner', formValues, config);
+        // Atribuição direta para cada campo do banco de dados
+        const bannerData = {
+            bannerPlaces: formValues.bannerPlaces || [],
+            cover: formValues.cover || null,
+            name: formValues.name || '',
+            email: formValues.email || '',
+            phone: formValues.phone || '',
+            site: formValues.site || '',
+            type: formValues.type || '',
+            whatsApp: formValues.whatsApp || '',
+            categories: formValues.categories || [],
+            locationId: formValues.locations[0] || null
+            // Adicione outros campos conforme necessário
+        };
+
+        await api.post('/banner', bannerData, config);
 
         dispatch({
             type: CREATE_BANNER
@@ -86,6 +102,7 @@ export const createBanner = (formValues) => async dispatch => {
         return false;
     }
 }
+
 
 // Dá fetch em um único banner
 export const fetchBanner = (id) => async dispatch => {
@@ -415,7 +432,22 @@ export const editBanner = (id, formValues) => async dispatch => {
             }
         }
 
-        const response = await api.put(`/banner/${id}`, formValues, config);
+        // Atribuição direta para cada campo do banco de dados
+        const bannerData = {
+            bannerPlaces: formValues.bannerPlaces || [],
+            cover: formValues.cover || null,
+            name: formValues.name || '',
+            email: formValues.email || '',
+            phone: formValues.phone || '',
+            site: formValues.site || '',
+            type: formValues.type || '',
+            whatsApp: formValues.whatsApp || '',
+            categories: formValues.categories || [],
+            locationId: formValues.locations[0] || null
+            // Adicione outros campos conforme necessário
+        };
+console.log(bannerData)
+        const response = await api.put(`/banner/${id}`, bannerData, config);
 
         dispatch({
             type: EDIT_BANNER,
@@ -452,6 +484,7 @@ export const editBanner = (id, formValues) => async dispatch => {
         return false;
     }
 }
+
 
 // Seta o status do banner para bloqueado
 export const disableBanner = (id) => async dispatch => {

@@ -36,6 +36,7 @@ const BannerEdit = () => {
             site: banner?.site,
             name: banner?.name,
             bannerPlaces: banner?.bannerPlaces,
+            locations: banner?.locations,
             /* email: banner?.email,
             phone: banner?.phone,
             whatsApp: banner?.whatsApp ? formatString('(99) 99999-9999', banner.whatsApp) : null, */

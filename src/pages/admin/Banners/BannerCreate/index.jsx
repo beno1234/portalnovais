@@ -20,11 +20,9 @@ const BannerEdit = () => {
 
     const initialValues = useMemo(() => {
         const categoriesId = [];
-        const locationId = "";
 
         return {
             categories: categoriesId,
-            locations: locationId,
             bannerPlaces: ["home"],
             blockOnDate: false,
             status: "posted"
