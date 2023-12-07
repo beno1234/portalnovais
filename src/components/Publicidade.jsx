@@ -26,6 +26,8 @@ const Publicidade = ({ category, types, limit, place, random }) => {
         onFetchBanners();
     }, [onFetchBanners]);
 
+    console.log(banners)
+
     return (<>
         {
             banners?.length > 0 ?

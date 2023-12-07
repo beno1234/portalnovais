@@ -79,7 +79,7 @@ const GuiaDeEmpresas = () => {
             <div onClick={isSideBarOpen ? closeSideBar : undefined}>
                 <Masthead />
 
-                <div className='ui inverted vertical masthead secondary banner center aligned segment'>
+                <div className='ui inverted vertical masthead secondary banner center aligned segment guia'>
                     <div className="ui container">
                         <div className="ui equal width stackable grid">
                             <div className='center aligned row'>
@@ -93,11 +93,11 @@ const GuiaDeEmpresas = () => {
                     </div>
                 </div>
 
-                
-                <div>
-                    <Publicidade random types={"maxBanner"} place={"guiaDeEmpresas"} limit={1} category={searchParams.get("category")} />
-                </div>
 
+               
+                <Publicidade className="publi"  random={true}  place={"guiaDeEmpresas"} limit={1} category={searchParams.get("category")} />
+
+                
                 <div className='ui guiaDeEmpresas basic segment'>
 
                     <div className='ui stackable centered grid'>

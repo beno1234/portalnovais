@@ -95,3 +95,13 @@ background-color: red ;
     background-color: #eccda4;
     color: #313131;
 }
+
+.guia{
+    background-color: red;
+}
+
+.publi{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
