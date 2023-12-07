@@ -1,0 +1,50 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "email": "cinthia@mail.com",
+            "name": "Cinthia",
+            "role": "admin",
+            "active": true
+        },
+        {
+            "id": 2,
+            "email": "anunciante@mail.com",
+            "name": "Anunciante Pereira",
+            "role": "advertiser",
+            "active": true
+        },
+        {
+            "id": 3,
+            "document": "23485829855",
+            "email": "caue@hotmail.com",
+            "name": "Denilson Medrano",
+            "phone": "(11) 93149-1567",
+            "role": "admin",
+            "active": true
+        },
+        {
+            "id": 4,
+            "email": "wmvarga@gmail.com",
+            "name": "William M.",
+            "role": "advertiser",
+            "active": true
+        },
+        {
+            "id": 5,
+            "email": "noivo@mail.com",
+            "name": "Noivo da Silva Santos",
+            "role": "editor",
+            "active": true
+        },
+        {
+            "id": 6,
+            "email": "usuario@mail.com",
+            "name": "Usuário Teste",
+            "role": "engaged",
+            "active": true
+        }
+    ],
+    "total": 6,
+    "pages": 1
+}

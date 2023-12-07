@@ -1,0 +1,27 @@
+.advertise.section .ui.header {
+    font-size: 2em;
+}
+
+.advertise.section .exclamation.triangle.icon,
+.advertise.section .types {
+    color: rgb(17, 119, 0);
+}
+
+.advertise.section .link {
+    color: #a78656;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.advertise.section .link:hover {
+    color: #eccda4;
+    text-decoration: underline;
+}
+
+.advertise.section .title {
+    color: #a78656;
+}
+
+.advertise.section .segment {
+    font-size: 1.2em;
+}

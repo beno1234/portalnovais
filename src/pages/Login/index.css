@@ -1,0 +1,40 @@
+.login .ui.button {
+    background-color: #a78656;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.login .ui.button:hover {
+    background-color: #eccda4;
+    color: #313131;
+}
+
+.login.segment {
+    width: 680px;
+}
+
+.sign.up.button {
+    background-color: #fff;
+    color: #a78656;
+    border: 1px solid #a78656;
+    margin-left: 1em;
+}
+
+.sign.up.button:hover {
+    background-color: #eccda4;
+    color: #313131;
+}
+
+.forgot.password {
+    margin-top: 20px !important;
+    text-align: center !important;
+    text-decoration: underline !important;
+    font-size: 0.9em !important;
+    color: #a78656 !important;
+    cursor: pointer !important;
+}
+
+.forgot.password:hover {
+    color: #eccda4 !important;
+    text-decoration: underline !important;
+}

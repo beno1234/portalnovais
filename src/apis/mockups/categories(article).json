@@ -1,0 +1,68 @@
+{
+    "data": [
+        {
+            "id": 3,
+            "idCategoryParent": null,
+            "type": "Article",
+            "deletedAt": null,
+            "name": "Dicas de Buffet",
+            "isFeatured": false,
+            "description": null,
+            "image": null,
+            "publishedAt": "2022-12-19T07:31:06.367Z",
+            "maxQuotes": 0,
+            "categories": [
+                {
+                    "id": 4,
+                    "idCategoryParent": 3,
+                    "type": "Article",
+                    "deletedAt": null,
+                    "name": "Doces",
+                    "isFeatured": false,
+                    "description": null,
+                    "image": null,
+                    "publishedAt": "2022-12-19T07:31:31.728Z",
+                    "maxQuotes": 0
+                },
+                {
+                    "id": 5,
+                    "idCategoryParent": 3,
+                    "type": "Article",
+                    "deletedAt": null,
+                    "name": "Salgados",
+                    "isFeatured": false,
+                    "description": null,
+                    "image": null,
+                    "publishedAt": "2022-12-19T07:31:36.351Z",
+                    "maxQuotes": 0
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "idCategoryParent": null,
+            "type": "Article",
+            "deletedAt": null,
+            "name": "Automóveis",
+            "isFeatured": false,
+            "description": null,
+            "image": null,
+            "publishedAt": "2022-12-19T12:48:46.895Z",
+            "maxQuotes": 0,
+            "categories": [
+                {
+                    "id": 8,
+                    "idCategoryParent": 7,
+                    "type": "Article",
+                    "deletedAt": null,
+                    "name": "Carro",
+                    "isFeatured": false,
+                    "description": null,
+                    "image": null,
+                    "publishedAt": "2022-12-19T12:49:00.746Z",
+                    "maxQuotes": 0
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,97 @@
+.meta .right.floated i {
+    margin-left: 1em;
+}
+
+.star.icon:hover {
+    color: currentColor !important;
+}
+
+.option.column {
+    padding: 0.75rem 0.5rem !important;
+}
+
+.discount.header {
+    margin-top: 0.5em !important;
+}
+
+.recommendation.banner {
+    background: rgb(167, 134, 86) !important;
+    background: linear-gradient(105deg, rgba(236, 205, 164, 1) 0%, rgba(167, 134, 86, 1) 50%, rgba(236, 205, 164, 1) 100%) !important;
+    margin-bottom: 100px !important;
+    margin-top: 100px !important;
+    padding-top: 100px;
+}
+
+/* .recommendation.banner .header {
+    color: #fff;
+} */
+
+.rotated {
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    background-color: #313131;
+    border: 2px solid #eccda4;
+    transform: translate(-50%, -50%) rotate(45deg);
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 15;
+}
+
+.rotated .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: auto;
+    transform: translate(-5%, 75%) rotate(-45deg);
+    -ms-transform: translate(-5%, 75%) rotate(-45deg);
+    -webkit-transform: translate(-5%, 75%) rotate(-45deg);
+}
+
+
+.teste{
+display: flex;
+justify-content: space-between;
+background-color: red ;
+}
+/* Add this to your CSS */
+
+.publicidade-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 2em;
+}
+
+/* Style for the "Publicidade" section */
+.publicidade-container .ui.container {
+    background-color: #eccda4;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust the width and spacing as needed */
+.publicidade-container .four.wide.tablet.three.wide.computer.column {
+    width: 25%;
+    margin-right: 2%;
+}
+
+.publicidade-container .two.wide.column {
+    width: 70%;
+}
+
+/* Style for the "COTAÇÃO EXPRESS GRÁTIS" button */
+.publicidade-container .ui.fluid.button {
+    background-color: #a78656;
+    color: #fff;
+}
+
+.publicidade-container .ui.fluid.button:hover {
+    background-color: #eccda4;
+    color: #313131;
+}
