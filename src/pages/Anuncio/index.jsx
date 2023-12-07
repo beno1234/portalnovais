@@ -266,7 +266,7 @@ const Anuncio = () => {
                                         </div>
 
                                         <div className='ui anuncio sub header'>
-                                            Descrição aaa
+                                            Descrição
                                         </div>
                                         <RichTextEditor
                                             editorState={
@@ -279,7 +279,7 @@ const Anuncio = () => {
                                 </div>
 
                                 <div className='two wide column'>
-                                    <Link to="/cotacao" className='ui fluid button'>COTAÇÂO EXPRESS GRÁTIS  aaaa</Link>
+                                    <Link to="/cotacao" className='ui fluid button'>COTAÇÂO EXPRESS GRÁTIS</Link>
 
                                     <div className='ui container'>
                                         <div className="ui header" style={{ marginTop: "1em" }}>Publicidade</div>

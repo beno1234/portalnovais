@@ -101,9 +101,9 @@ const GuiaDeEmpresas = () => {
                 
                 <div className='ui guiaDeEmpresas basic segment'>
 
-                    <div className='ui stackable centered grid'>
+                    <div className='divGeral'>
 
-                        <div className='four wide tablet three wide computer column'>
+                        <div className='divFiltros'>
                             <div className='ui stackable centered grid'>
                                 <div className='left floated eight wide column'>
                                     <h3>
@@ -178,13 +178,13 @@ const GuiaDeEmpresas = () => {
                             </div>
                         </div>
 
-                        <div className='eleven wide tablet custom twelve wide computer column'>
+                        <div className='divAnuncio'>
                             <div className="ui stackable grid">
                                 <PublicAdvertisementList searchParams={searchParams} />
                             </div>
                         </div>
 
-                        <div className='two wide column'>
+                        <div className='divPubli'>
                                 <Link to="/cotacao" className='ui fluid button'>COTAÇÂO EXPRESS GRÁTIS</Link>
 
                                 <div className='ui container'>
