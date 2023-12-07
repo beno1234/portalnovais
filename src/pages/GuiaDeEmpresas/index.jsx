@@ -2,7 +2,7 @@ import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import React, { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams,Link } from 'react-router-dom';
 
 import Masthead from '../../components/Masthead';
 import Publicidade from '../../components/Publicidade';
@@ -29,7 +29,7 @@ const GuiaDeEmpresas = () => {
     const locations = indexOrderLocation.map((index) => listLocation[index]);
 
     const selectedCategories = useRef(searchParams.has("category") ? searchParams.getAll("category")[0].split(',').map(n => parseInt(n)) : []);
-
+    
     const onCategorySelect = (id) => {
         selectedCategories.current.includes(id)
             ? selectedCategories.current = selectedCategories.current.filter((n) => n !== id)
@@ -73,6 +73,7 @@ const GuiaDeEmpresas = () => {
         dispatch(fetchLocations());
     }, [dispatch]);
 
+    
     return (
         <>
             <SideBarMenu />
@@ -181,6 +182,17 @@ const GuiaDeEmpresas = () => {
                             <div className="ui stackable grid">
                                 <PublicAdvertisementList searchParams={searchParams} />
                             </div>
+                        </div>
+
+                        <div className='two wide column'>
+                                <Link to="/cotacao" className='ui fluid button'>COTAÇÂO EXPRESS GRÁTIS</Link>
+
+                                <div className='ui container'>
+                                        <div className="ui header" style={{ marginTop: "1em" }}>Publicidade</div>
+                                        {/*<Publicidade types={["featured", "miniBanner"]} category={Object.values(advertisement.categories).map((item) => item.category.id)} limit={15} />}
+                                        {/* <img alt="Fotografia" className="ui centered image" src="/banners/destaque_aranda.gif" />
+                                        <img alt="Fotografia" className="ui centered image" src="/banners/destaque_buffetlavide.gif" /> */}
+                                </div>
                         </div>
                     </div>
 
