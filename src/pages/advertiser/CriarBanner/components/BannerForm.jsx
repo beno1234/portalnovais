@@ -10,6 +10,9 @@ import Input from '../../../../components/form/Input';
 import Select from '../../../../components/form/Select';
 import { dataURLtoFile } from '../../../../utils';
 
+
+import { fetchLocations } from '../../../../store/actions/location';
+
 import { fetchCategories } from '../../../../store/actions/category';
 import { uploadFile, getFile } from '../../../../store/actions/file';
 
@@ -24,8 +27,10 @@ const BannerForm = ({ admin, cover, initialValues, onSubmit, disableSubmit, form
     const [coverImageLoading, setCoverImageLoading] = useState(false);
     const [coverImageError, setCoverImageError] = useState(false);
 
+    const { list: listLocation, isLoading: isLoadingLocation, error: errorLocation, indexOrder: indexOrderLocation } = useSelector((state) => state.location);    
     const { list: listCategory, isLoading: isLoadingCategory, error: errorCategory } = useSelector((state) => state.category);
     const categories = Object.values(listCategory);
+    const locations = indexOrderLocation.map((index) => listLocation[index]);
 
     const statusOptions = [
         {
@@ -83,6 +88,15 @@ const BannerForm = ({ admin, cover, initialValues, onSubmit, disableSubmit, form
             text: category.name
         }
     });
+
+    const locationOptions = locations.map((location) => {
+        return {
+            key: `location${location.id}`,
+            value: location.id,
+            text: location.name
+        }
+    });
+
 
     const onFormSubmit = (formValues) => {
         /* if (formValues.phone) {
@@ -179,6 +193,7 @@ const BannerForm = ({ admin, cover, initialValues, onSubmit, disableSubmit, form
 
     useEffect(() => {
         dispatch(fetchCategories());
+        dispatch(fetchLocations());
     }, [dispatch]);
 
     useEffect(() => {
@@ -313,6 +328,34 @@ const BannerForm = ({ admin, cover, initialValues, onSubmit, disableSubmit, form
                             </Condition>
                         </div>
 
+                        {(!isLoadingLocation && locationOptions.length <= 0)
+                                ? errorLocation
+                                    ? <div className='field'>
+                                        <label>Localização</label>
+                                        <div className='ui error message visible'>
+                                            <i className='warning icon'></i>
+                                            As localizações não foram carregadas corretamente.
+                                        </div>
+                                    </div>
+                                    : <div className='field'>
+                                        <label>Localização</label><div className='ui error message visible'>
+                                            <i className='warning icon'></i>
+                                            Não há nenhuma localização cadastrada.
+                                        </div>
+                                    </div>
+                                : <Field
+                                    name="locations"
+                                    component={Select}
+                                    placeholder="Escolha uma opção"
+                                    options={locationOptions}
+                                    label="Localização *"
+                                    loading={!!isLoadingLocation}
+                                    isMultiple
+                                    disabled={(errorLocation || disableSubmit) ? true : false}
+                                />
+                            }
+
+
                         <h4 className="ui header">Imagens</h4>
                         <div className='field'>
                             <label htmlFor="coverImage" className="ui icon button">
@@ -393,7 +436,7 @@ const BannerForm = ({ admin, cover, initialValues, onSubmit, disableSubmit, form
                             </div>
                         </>}
 
-                        <button className={`ui right floated secondary submit button ${(disableSubmit || invalid || coverImageError || coverImageLoading || !coverImageId || isLoadingCategory || categoryOptions.length <= 0) && 'disabled'}`} type="submit">
+                        <button className={`ui right floated secondary submit button ${(disableSubmit || invalid || coverImageError || coverImageLoading || !coverImageId || isLoadingCategory|| isLoadingLocation || categoryOptions.length <= 0 || locationOptions.length <= 0) && 'disabled'}`} type="submit">
                             ENVIAR
                         </button>
                     </form>

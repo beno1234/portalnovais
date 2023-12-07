@@ -12,11 +12,16 @@ import Footer from '../../../components/Footer';
 
 import { createBanner } from '../../../store/actions/banner';
 import { fetchCategories } from '../../../store/actions/category';
+import { fetchLocations } from '../../../store/actions/location';
 import { uploadFile } from '../../../store/actions/file';
 
 const CriarBanner = () => {
     const { error: errorBanner, isLoading: isLoadingBanner } = useSelector((state) => state.banner);
     const { list: listCategory, isLoading: isLoadingCategory, error: errorCategory } = useSelector((state) => state.category);
+
+    const { list: listLocation, isLoading: isLoadingLocation, error: errorLocation, indexOrder: indexOrderLocation } = useSelector((state) => state.location);
+    const locations = indexOrderLocation.map((index) => listLocation[index]);
+
 
     const categories = Object.values(listCategory);
 
@@ -66,6 +71,15 @@ const CriarBanner = () => {
         }
     });
 
+    const locationOptions = locations.map((location) => {
+        return {
+            key: `location${location.id}`,
+            value: location.id,
+            text: location.name
+        }
+    });
+    
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -78,6 +92,8 @@ const CriarBanner = () => {
             formValues.whatsApp = formValues.whatsApp.replace(/\D/g, "");
         } */
 
+       
+
         const mockup = {
             "cover": coverImageId,
             "bannerPlaces": ["home"]
@@ -86,6 +102,7 @@ const CriarBanner = () => {
 
         const success = await dispatch(createBanner({ ...mockup, ...formValues }));
         if (success) navigate('/anunciante/meus-banners');
+       
     }
 
     const validateValues = (values) => {
@@ -105,6 +122,9 @@ const CriarBanner = () => {
             if (values.type === "maxBanner" && (!values.bannerPlaces || values.bannerPlaces?.length <= 0)) {
                 errors.bannerPlaces = "Selecione o(s) local(is) do banner.";
             }
+        }
+        if (!values.locations || values.locations?.length <= 0) {
+            errors.locations = "Selecione ao menos uma localização"
         }
         if (!values.categories || values.categories?.length <= 0) {
             errors.categories = "Selecione ao menos uma categoria"
@@ -154,6 +174,7 @@ const CriarBanner = () => {
 
     useEffect(() => {
         dispatch(fetchCategories());
+        dispatch(fetchLocations());
     }, [dispatch]);
 
     useEffect(() => {
@@ -190,6 +211,7 @@ const CriarBanner = () => {
                             keepDirtyOnReinitialize
                             initialValues={{
                                 categories: [],
+                                locations: [],
                                 bannerPlaces: ["home"]
                             }}
                             validate={validateValues}
@@ -289,6 +311,33 @@ const CriarBanner = () => {
                                         />
                                     }
 
+                                    {(!isLoadingLocation && locationOptions.length <= 0)
+                                        ? errorLocation
+                                            ? <div className='field'>
+                                                <label>Localização</label>
+                                                <div className='ui error message visible'>
+                                                    <i className='warning icon'></i>
+                                                    As localizações não foram carregadas corretamente.
+                                                </div>
+                                            </div>
+                                            : <div className='field'>
+                                                <label>Localização</label><div className='ui error message visible'>
+                                                    <i className='warning icon'></i>
+                                                    Não há nenhuma localização cadastrada.
+                                                </div>
+                                            </div>
+                                        : <Field
+                                            name="locations"
+                                            component={Select}
+                                            placeholder="Escolha uma opção"
+                                            options={locationOptions}
+                                            label="Localização *"
+                                            loading={!!isLoadingLocation}
+                                            isMultiple
+                                            disabled={(errorLocation ||isLoadingBanner) ? true : false}
+                                        />
+                                    }
+
                                     <div className='ui header'>
                                         Banner
                                     </div>
@@ -334,7 +383,7 @@ const CriarBanner = () => {
                                     </div>
 
                                     <div className='ui right floated basic segment'>
-                                        <button className={`ui button ${(coverImageError || coverImageLoading || !coverImageId || isLoadingBanner || isLoadingCategory || categoryOptions.length <= 0) && 'disabled'}`} type="submit">Cadastrar</button>
+                                        <button className={`ui button ${(coverImageError || coverImageLoading || !coverImageId || isLoadingBanner || isLoadingCategory || isLoadingLocation || categoryOptions.length <= 0 || locationOptions.length<=0) && 'disabled'}`} type="submit">Cadastrar</button>
                                     </div>
                                 </form>
                             )} />
