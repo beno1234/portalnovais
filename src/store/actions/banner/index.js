@@ -184,50 +184,6 @@ export const fetchPublicBanners = (params) => async dispatch => {
     }
 }
 
-export const fetchPublicBannersLateral = (params) => async dispatch => {
-    dispatch(startLoading("Carregando banners..."));
-
-    try {
-        // Pega o token do localStorage
-        const token = localStorage.getItem('token');
-
-        // Adiciona o token ao header da request
-        const config = {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }
-
-        let url = "/banner";
-        params += "&status=posted";
-        if (params) {
-            url = `${url}?${params}`;
-        }
-
-        const response = await api.get(url, config);
-        const totalCount = !!response.data['total'] ?
-            response.data['total'] : !!response.data.data.length ?
-                response.data.data.length : 0;
-
-        dispatch({
-            type: FETCH_BANNERS,
-            payload: {
-                data: response.data.data,
-                totalCount
-            }
-        });
-
-        return true;
-    } catch (err) {
-        dispatch(setError({
-            message: err.response?.data?.message ? err.response?.data?.message : err.message,
-            code: err.code
-        }));
-
-        return false;
-    }
-}
-
 // Lista de todos os banners só em review
 export const fetchBannersInReview = () => async dispatch => {
     dispatch(startLoading("Carregando banners..."));

@@ -4,6 +4,9 @@ import React, { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams,Link } from 'react-router-dom';
 
+
+import api from '../../apis/index';
+
 import Masthead from '../../components/Masthead';
 import Publicidade from '../../components/Publicidade';
 import Footer from '../../components/Footer';
@@ -15,7 +18,6 @@ import { fetchLocations } from '../../store/actions/location';
 import useMenu from '../../hooks/useMenu';
 import SideBarMenu from '../../components/SideBarMenu';
 import { HiOutlineLocationMarker, HiOutlineBookOpen, HiOutlineShieldCheck } from 'react-icons/hi';
-import PublicidadeLateral from '../../components/PublicidadeLateral';
 
 const GuiaDeEmpresas = () => {
     const { isSideBarOpen, closeSideBar } = useMenu();
@@ -23,7 +25,7 @@ const GuiaDeEmpresas = () => {
     const dispatch = useDispatch();
     const defaultParam = new URLSearchParams("page=1&limit=10");
     const [searchParams, setSearchParams] = useSearchParams(defaultParam);
-    const [searchParamsLateral, setSearchParamsLateral] = useSearchParams(defaultParam);
+
     const { list: listCategory, indexOrder: indexOrderCategory, isLoading: isLoadingCategory/* , error: errorCategory */ } = useSelector((state) => state.category);
     const { list: listLocation, indexOrder: indexOrderLocation, isLoading: isLoadingLocation/* , error: errorLocation */ } = useSelector((state) => state.location);
     const categories = indexOrderCategory.map((index) => listCategory[index]);
@@ -190,9 +192,11 @@ const GuiaDeEmpresas = () => {
 
                                 <div className='ui container'>
                                         <div className="ui header" style={{ marginTop: "1em" }}>Publicidade</div>
-                                        <PublicidadeLateral types={["featured", "miniBanner"]} category={searchParamsLateral.get("category")} limit={15} />
-                                        {/* <img alt="Fotografia" className="ui centered image" src="/banners/destaque_aranda.gif" /> */}
-                                        <img alt="Fotografia" className="ui centered image" src="/banners/destaque_buffetlavide.gif" /> 
+
+                                        <Publicidade className="publi"  random={true} types={["featured", "miniBanner"]}   limit={10} category={searchParams.get("category")} />
+                                        {/*<Publicidade types={["featured", "miniBanner"]} category={Object.values(advertisement.categories).map((item) => item.category.id)} limit={15} />}
+                                        {/* <img alt="Fotografia" className="ui centered image" src="/banners/destaque_aranda.gif" />
+                                        <img alt="Fotografia" className="ui centered image" src="/banners/destaque_buffetlavide.gif" /> */}
                                 </div>
                         </div>
                     </div>

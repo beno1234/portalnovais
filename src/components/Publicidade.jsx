@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Actions
 import { fetchPublicBanners } from '../store/actions/banner';
+
 import PublicidadeBanner from './PublicidadeBanner';
 
 const Publicidade = ({ category, types, limit, place, random }) => {
