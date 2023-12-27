@@ -2,8 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 
 import { getFile } from "../store/actions/file";
 
-const PublicidadeBanner = ({ data }) => {
-  // Adicione type como propriedade
+const PublicidadeBannerLateral = ({ data }) => {
   const [image, setImage] = useState("");
 
   const onFetchImage = useCallback(async (id) => {
@@ -15,11 +14,15 @@ const PublicidadeBanner = ({ data }) => {
     data && onFetchImage(data.cover);
   }, [data, onFetchImage]);
 
+  if (data.type !== "miniBanner") {
+    return null;
+  }
+
   return (
     <a href={data.site}>
       <img
         alt={data.name}
-        className={`ui centered image ${data.locationId} banner`} // Substitua data.type por type
+        className={`ui centered image ${data.type} banner`}
         src={image}
         style={{ marginTop: "1em", marginBottom: "1em" }}
       />
@@ -27,4 +30,4 @@ const PublicidadeBanner = ({ data }) => {
   );
 };
 
-export default PublicidadeBanner;
+export default PublicidadeBannerLateral;
