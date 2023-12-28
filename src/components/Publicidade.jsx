@@ -6,7 +6,7 @@ import { fetchPublicBanners } from "../store/actions/banner";
 
 import PublicidadeBanner from "./PublicidadeBanner";
 
-const Publicidade = ({ category, types, limit, locations }) => {
+const Publicidade = ({ category, types, limit, locations, place }) => {
   const dispatch = useDispatch();
   const { list, isLoading } = useSelector((state) => state.banner);
   const banners = Object.values(list);
@@ -17,11 +17,12 @@ const Publicidade = ({ category, types, limit, locations }) => {
   const onFetchBanners = useCallback(() => {
     const params = new URLSearchParams();
 
-    types && types.forEach((type) => params.append("types", type));
+    types && params.append("type", types.toString());
 
     // Filtra os banners apenas se houver localizações selecionadas
-    if (locations.length > 0) {
+    if (locations && locations.length > 0) {
       locations.forEach((location) => params.append("location", location));
+      place && params.append("bannerPlace", place);
     }
 
     category && params.append("category", category.toString());
@@ -29,7 +30,7 @@ const Publicidade = ({ category, types, limit, locations }) => {
     Number.isInteger(limit) && params.append("limit", limit.toString());
 
     dispatch(fetchPublicBanners(params.toString()));
-  }, [dispatch, category, limit, types, locations]);
+  }, [dispatch, category, limit, types, locations, place]);
 
   useEffect(() => {
     onFetchBanners();

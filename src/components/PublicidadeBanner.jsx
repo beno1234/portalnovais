@@ -19,7 +19,7 @@ const PublicidadeBanner = ({ data }) => {
     <a href={data.site}>
       <img
         alt={data.name}
-        className={`ui centered image ${data.locationId} banner`} // Substitua data.type por type
+        className={`ui centered image ${data.type} banner`} // Substitua data.type por type
         src={image}
         style={{ marginTop: "1em", marginBottom: "1em" }}
       />
