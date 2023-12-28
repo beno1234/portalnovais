@@ -18,11 +18,11 @@ const Publicidade = ({ category, types, limit, locations, place }) => {
     const params = new URLSearchParams();
 
     types && params.append("type", types.toString());
+    place && params.append("bannerPlace", place);
 
     // Filtra os banners apenas se houver localizações selecionadas
     if (locations && locations.length > 0) {
       locations.forEach((location) => params.append("location", location));
-      place && params.append("bannerPlace", place);
     }
 
     category && params.append("category", category.toString());

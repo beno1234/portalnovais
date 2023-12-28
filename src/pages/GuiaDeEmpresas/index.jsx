@@ -142,7 +142,6 @@ const GuiaDeEmpresas = () => {
         <Publicidade
           className="publi"
           types={["maxBanner"]} // Tipo correto para o banner superior
-          place={"guiaDeEmpresas"}
           limit={1}
           category={searchParams.get("category")}
           locations={selectedLocation ? [selectedLocation] : []}
